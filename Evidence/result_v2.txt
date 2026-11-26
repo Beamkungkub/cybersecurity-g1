@@ -1,0 +1,132 @@
+== SUMMARY ==
+  total records: 20819  | loopback ข้ามไว้ | static/.axd ข้ามไว้: 13557  | วิเคราะห์: 5822
+  IP labels: {'LOOP': 1, 'INT': 142, 'EXT': 123} 
+  หมายเหตุ: เวลาใน log ไม่ทราบ timezone (IIS ปกติเป็น UTC)
+
+== STATUS แยก INT/EXT (ไม่รวม static) ==
+  INT {'302': 480, '200': 2886, '404': 1522, '500': 3, '303': 1}
+  EXT {'200': 554, '404': 287, '302': 87, '500': 2}
+
+== TOP IP (masked, ไม่รวม static) ==
+      241  INT-006
+      206  INT-012
+      165  INT-005
+      165  INT-035
+      164  INT-032
+      140  INT-003
+      125  INT-070
+       96  EXT-066
+       92  INT-133
+       91  INT-076
+
+== BURST ไม่รวม static: >=5 req/วินาที  (ทั้งหมด 27) ==
+     7  INT-012  2025-11-25 05:06:27
+     7  INT-012  2025-11-25 05:11:43
+     7  INT-107  2025-11-25 08:02:45
+     6  INT-003  2025-11-24 04:12:51
+     6  INT-096  2025-11-25 02:30:20
+     6  INT-092  2025-11-25 02:43:02
+     6  INT-006  2025-11-25 03:11:22
+     6  INT-012  2025-11-25 05:05:33
+     6  INT-097  2025-11-25 06:21:00
+     6  INT-006  2025-11-27 03:05:08
+
+== ID PARAM: (IP,หน้า) ที่ใช้ id= ต่างกัน >= 10 ค่า ==
+
+== LOGIN (POST) ต่อ IP/หน้า ==
+  INT-003 /webname/Main/login.aspx {'302': 9}
+  INT-012 /webname/Main/login.aspx {'302': 9}
+  INT-005 /webname/Main/login.aspx {'302': 8}
+  INT-032 /webname/Main/login.aspx {'302': 8}
+  INT-006 /webname/Main/login.aspx {'302': 6}
+  INT-028 /webname/Main/login.aspx {'200': 5}
+  INT-114 /webname/Main/login.aspx {'200': 4, '302': 1}
+  INT-030 /webname/Main/login.aspx {'302': 4}
+  INT-049 /webname/Main/login.aspx {'200': 2, '302': 2}
+  INT-070 /webname/Main/login.aspx {'302': 4}
+
+== USER ที่ใช้ >1 IP (top) ==
+  user25: 4 IP
+  user116: 4 IP
+  user30: 3 IP
+  user76: 3 IP
+  user2: 3 IP
+  user85: 3 IP
+  user100: 3 IP
+  user9: 3 IP
+  user43: 3 IP
+  user115: 2 IP
+== IP ที่มี >1 user (top) ==
+  INT-032: 3 users
+  INT-003: 2 users
+  INT-055: 2 users
+  EXT-066: 2 users
+  INT-076: 2 users
+  INT-080: 2 users
+  INT-085: 2 users
+  INT-109: 2 users
+  INT-001: 1 users
+  INT-004: 1 users
+
+== 404 ตามหน้า ==
+     1804  /webname/UIK/PageResource.aspx
+        5  /robots.txt
+
+== 5xx (status, หน้า, ชื่อพารามิเตอร์) ==
+        3  ('500', '/webname/Main/MIS/Staff/Applications/RepSlip.aspx', ('id', 'periodid', 'salarytype'))
+        2  ('500', '/webname/Main/login.aspx', ())
+
+== EXT: หน้าที่ถูกเรียก ==
+      282  /webname/UIK/PageResource.aspx
+      231  /webname/Main/MainMenu.aspx
+      117  /webname/Main/login.aspx
+       80  /webname/Main/Home.aspx
+       32  /webname/Main/MIS/Staff/Applications/StaffSchedule.aspx
+       30  /webname/Main/MIS/Staff/Applications/StaffAttRequestData.aspx
+       27  /webname/Main/MIS/Staff/Applications/RepSlip.aspx
+       23  /
+       23  /webname/
+       21  /webname/Main/MIS/Staff/Applications/StaffSalary.aspx
+
+== ชั่วโมงของวัน (ตามเวลาใน log) ==
+  00:00  210
+  01:00  745
+  02:00  1097
+  03:00  669
+  04:00  558
+  05:00  433
+  06:00  371
+  07:00  416
+  08:00  457
+  09:00  461
+  10:00  187
+  11:00  57
+  12:00  31
+  13:00  6
+  14:00  2
+  15:00  52
+  18:00  14
+  22:00  4
+  23:00  52
+
+== ช้าที่สุด (avg time-taken ms, >=5 ครั้ง) ==
+       2565  /webname/Main/MIS/Staff/Applications/StaffInfo.aspx
+       1545  /webname/Main/MIS/Staff/Applications/StaffSalary.aspx
+       1106  /webname/
+       1018  /webname/Main/MIS/Staff/Reports/Web025_1.aspx
+        686  /webname/Main/MIS/Staff/Applications/StaffSchedule.aspx
+        483  /webname/Main/MIS/Staff/Applications/StaffAtt.aspx
+        427  /webname/Main/MIS/Staff/Applications/RepAttRequest.aspx
+        419  /webname/Main/MIS/Staff/Applications/StaffAttDate.aspx
+        392  /webname/Main/login.aspx
+        353  /webname/Main/MIS/Staff/Applications/RepSlip.aspx
+
+== METHOD ผสมต่อหน้า (GET+POST) ==
+  {'GET': 1804}  /webname/UIK/PageResource.aspx
+  {'GET': 333, 'POST': 1054}  /webname/Main/MainMenu.aspx
+  {'GET': 324, 'POST': 240}  /webname/Main/login.aspx
+  {'GET': 484}  /webname/Main/Home.aspx
+  {'GET': 222, 'POST': 190}  /webname/Main/MIS/Staff/Applications/StaffAttRequestData.aspx
+  {'GET': 120, 'POST': 56}  /webname/Main/MIS/Staff/Applications/StaffAtt.aspx
+  {'GET': 136, 'POST': 22}  /webname/Main/MIS/Staff/Applications/StaffSchedule.aspx
+  {'GET': 112}  /

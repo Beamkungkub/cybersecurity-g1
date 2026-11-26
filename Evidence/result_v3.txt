@@ -1,0 +1,84 @@
+records: 20819
+
+== A. บริการ .asmx (รวม loopback): ความถี่/ความสม่ำเสมอ/status ==
+  /AppName/CommandServices.asmx [LOOP] n=1440 status={'303': 1440} method={'POST': 1440}
+    ต่อวัน: {'2025-11-19': 144, '2025-11-20': 144, '2025-11-21': 144, '2025-11-22': 144, '2025-11-23': 144, '2025-11-24': 144, '2025-11-25': 144, '2025-11-26': 144, '2025-11-27': 144, '2025-11-28': 144}
+    ช่วงห่างระหว่างครั้ง (วินาที:จำนวน) top5: [(600, 1427), (599, 6), (601, 6)]
+    avg time-taken(ms)=4  sc-bytes distinct=1
+
+== B. PageResource.aspx ==
+  n=1804 status={'404': 1804} INT/EXT={'INT': 1522, 'EXT': 282}
+  referer path top:
+     395  /webname/Main/Home.aspx
+     315  /webname/Main/MainMenu.aspx
+     303  /webname/Main/login.aspx
+     130  /webname/Main/MIS/Staff/Applications/StaffSchedule.aspx
+     120  /webname/Main/MIS/Staff/Applications/StaffAtt.aspx
+  param names: [(('t',), 1804)]
+  ต่อวัน: {'2025-11-19': 164, '2025-11-20': 144, '2025-11-21': 206, '2025-11-22': 39, '2025-11-23': 26, '2025-11-24': 389, '2025-11-25': 320, '2025-11-26': 182, '2025-11-27': 148, '2025-11-28': 186}
+
+== C. หน้าสำคัญ (SENS): INT/EXT, method, status, พารามิเตอร์ ==
+  /webname/Main/MIS/Staff/Applications/StaffAttRequestData.aspx
+    n=412 EXT=30 (EXT IP 4, EXT user 4) status={'200': 411, '302': 1} GET-with-query=222
+    EXT status={'200': 30} param sets top2=[(('attleavetype', 'id', 'requesttype', 'requestyear'), 237), (('_TSM_CombinedScripts_', '_TSM_HiddenField_'), 118)]
+  /webname/Main/MIS/Staff/Applications/RepSlip.aspx
+    n=85 EXT=27 (EXT IP 13, EXT user 11) status={'200': 82, '500': 3} GET-with-query=85
+    EXT status={'200': 26, '500': 1} param sets top2=[(('id', 'periodid', 'salarytype'), 85)]
+  /webname/Main/MIS/Staff/Applications/StaffSalary.aspx
+    n=83 EXT=21 (EXT IP 18, EXT user 14) status={'200': 79, '302': 4} GET-with-query=76
+    EXT status={'200': 21} param sets top2=[(('id',), 83)]
+  /webname/Main/MIS/Staff/Reports/Web025_1.aspx
+    n=56 EXT=21 (EXT IP 6, EXT user 6) status={'200': 55, '302': 1} GET-with-query=28
+    EXT status={'200': 20, '302': 1} param sets top2=[(('id',), 56)]
+  /webname/Main/MIS/Staff/Applications/StaffSalary.js
+    n=50 EXT=14 (EXT IP 14, EXT user 13) status={'200': 50} GET-with-query=0
+    EXT status={'200': 14} param sets top2=[]
+  /webname/Main/MIS/Staff/Applications/StaffInfo.aspx
+    n=37 EXT=4 (EXT IP 4, EXT user 4) status={'200': 36, '302': 1} GET-with-query=37
+    EXT status={'200': 4} param sets top2=[(('id',), 37)]
+  /webname/Main/MIS/Staff/Controls/StaffInfoCtl.js
+    n=25 EXT=3 (EXT IP 3, EXT user 3) status={'200': 25} GET-with-query=0
+    EXT status={'200': 3} param sets top2=[]
+  /webname/Main/MIS/Staff/Reports/Web025_1.js
+    n=19 EXT=5 (EXT IP 5, EXT user 5) status={'200': 19} GET-with-query=0
+    EXT status={'200': 5} param sets top2=[]
+
+== D. ผู้ใช้/IP ภายนอกที่เข้าหน้าสำคัญ ==
+  EXT-090 n=18 users=['user21'] status={'200': 18} วัน=['2025-11-25']
+  EXT-066 n=17 users=['user2', 'user52'] status={'200': 17} วัน=['2025-11-22', '2025-11-27']
+  EXT-004 n=14 users=['user28'] status={'200': 14} วัน=['2025-11-19']
+  EXT-062 n=9 users=['user2'] status={'200': 9} วัน=['2025-11-22']
+  EXT-108 n=7 users=['user1'] status={'200': 7} วัน=['2025-11-27']
+  EXT-080 n=6 users=['user12'] status={'200': 6} วัน=['2025-11-24']
+  EXT-116 n=6 users=['user9'] status={'200': 6} วัน=['2025-11-28']
+  EXT-084 n=5 users=['user9'] status={'200': 5} วัน=['2025-11-25']
+  EXT-096 n=5 users=['user71'] status={'200': 5} วัน=['2025-11-26']
+  EXT-017 n=5 users=['user21'] status={'200': 5} วัน=['2025-11-19']
+  EXT-045 n=4 users=['user29'] status={'200': 4} วัน=['2025-11-23']
+  EXT-083 n=4 users=['user32'] status={'200': 4} วัน=['2025-11-25']
+
+== E. login POST: ลำดับต่อ IP (200 = ฟอร์มแสดงซ้ำ, 302 = redirect) ==
+  IP ที่ POST login: 143 | IP ที่มี 200 ติดกัน >=3: 3 | รวมสถานะ: {'302': 247, '200': 28}
+
+== F. ร่องรอยสำรวจจากภายนอก: robots.txt / root ==
+  EXT-008 2025-11-19 /robots.txt 404 other
+  EXT-029 2025-11-20 /robots.txt 404 other
+  EXT-046 2025-11-21 /robots.txt 404 other
+  EXT-110 2025-11-27 /robots.txt 404 other
+  EXT-118 2025-11-28 /robots.txt 404 other
+  root/webname ต่อ (IP,path) top:
+       3  EXT-066 /
+       3  EXT-066 /webname/
+       2  EXT-074 /
+       2  EXT-080 /webname/
+       2  EXT-113 /
+       2  EXT-113 /webname/
+
+== G. 5xx: เวลา, IP(mask), หน้า, referer path ==
+  2025-11-20 03:37:05 INT-005 500.0 GET /webname/Main/login.aspx ref=-
+  2025-11-21 02:56:20 EXT-003 500.0 GET /webname/Main/login.aspx ref=/
+  2025-11-25 01:43:03 INT-081 500.0 GET /webname/DXXRDV.axd ref=/webname/Main/MIS/Staff/Applications/RepAttRequest.aspx
+  2025-11-27 03:03:30 INT-124 500.0 GET /webname/Main/MIS/Staff/Applications/RepSlip.aspx ref=/webname/Main/MIS/Staff/Applications/StaffSalary.aspx
+  2025-11-27 03:03:33 INT-124 500.0 GET /webname/Main/MIS/Staff/Applications/RepSlip.aspx ref=/webname/Main/MIS/Staff/Applications/StaffSalary.aspx
+  2025-11-27 05:40:24 EXT-104 500.0 GET /webname/Main/MIS/Staff/Applications/RepSlip.aspx ref=/webname/Main/MIS/Staff/Applications/StaffSalary.aspx
+  2025-11-27 08:28:16 EXT-108 500.0 GET /webname/DXXRDV.axd ref=/
